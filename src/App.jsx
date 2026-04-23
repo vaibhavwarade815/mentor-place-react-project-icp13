@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 
-const Dummy = ({ name }) => <h1>{name} Page</h1>;
+const Dummy = ({ name }) => <h1 style={{textAlign:"center"}}>{name}</h1>;
 
 function App() {
   return (
@@ -9,12 +9,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
 
-        {/* Temporary pages */}
-        <Route path="/upload" element={<Dummy name="Resume Upload" />} />
-        <Route path="/preparation" element={<Dummy name="Placement Preparation" />} />
-        <Route path="/mock" element={<Dummy name="Mock Interview" />} />
-        <Route path="/progress" element={<Dummy name="Progress Tracker" />} />
-
+        {/* Pages */}
+        <Route path="/upload" element={<Dummy name="Resume Upload Page" />} />
+        <Route path="/preparation" element={<Dummy name="Placement Prep Page" />} />
+        <Route path="/mock" element={<Dummy name="Mock Interview Page" />} />
+        <Route path="/progress" element={<Dummy name="Progress Tracker Page" />} />
       </Routes>
     </BrowserRouter>
   );
