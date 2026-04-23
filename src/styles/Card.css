@@ -1,38 +1,25 @@
-.card {
-  width: 220px;
+.feature-card {
+  width: 240px;
+  height: 150px;
+  background: white;
+  border-radius: 15px;
   padding: 20px;
-  border-radius: 16px;
-  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
   text-align: center;
-  font-family: sans-serif;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.feature-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  background: #007bff;
+  color: white;
 }
 
-/* Card Types */
-.card-score {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-}
-
-.card-progress {
-  background: linear-gradient(135deg, #43cea2, #185a9d);
-}
-
-.card-status {
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
-}
-
-/* Text */
-.card-title {
-  font-size: 18px;
+.feature-card h2 {
   margin-bottom: 10px;
 }
 
-.card-value {
-  font-size: 28px;
-  font-weight: bold;
+.feature-card p {
+  font-size: 14px;
 }
