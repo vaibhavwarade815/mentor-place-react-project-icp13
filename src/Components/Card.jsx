@@ -1,10 +1,16 @@
-import "./FeatureCard.css";
+import "./Card.css";
 
-const Card = ({ title, desc, onClick }) => {
+const Card = ({ title, desc, icon, onClick }) => {
   return (
     <div className="card" onClick={onClick}>
-      <h2>{title}</h2>
-      <p>{desc}</p>
+      
+      <div className="card-icon">{icon}</div>
+
+      <div className="card-content">
+        <h2 className="card-title">{title}</h2>
+        <p className="card-desc">{desc}</p>
+      </div>
+
     </div>
   );
 };

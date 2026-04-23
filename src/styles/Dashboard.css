@@ -1,72 +1,98 @@
 /* 🌈 Background */
 .dashboard {
   min-height: 100vh;
-  padding: 30px;
-  background: linear-gradient(120deg, #1e3c72, #2a5298);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* 🧠 Heading */
-.heading {
-  color: white;
-  font-size: 28px;
-  margin-bottom: 30px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   text-align: center;
+  font-family: "Segoe UI", sans-serif;
 }
 
-/* 📦 Cards Layout */
-.cards {
+/* 🧠 Title */
+.title {
+  color: white;
+  font-size: 30px;
+  margin-bottom: 35px;
+}
+
+/* 📦 Grid Layout */
+.card-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
+  margin: auto;
 }
 
 /* 🃏 Card Style */
 .card {
   background: white;
-  border-radius: 16px;
   padding: 25px;
-  text-align: center;
+  border-radius: 18px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
 }
 
 /* ✨ Hover Animation */
 .card:hover {
-  transform: translateY(-8px) scale(1.05);
-  background: #f1f5ff;
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
 
-/* 👆 Click effect */
+/* 🔘 Click Effect */
 .card:active {
   transform: scale(0.97);
 }
 
-/* 🔘 Icon */
-.icon {
-  font-size: 40px;
+/* 🌟 Glow Effect */
+.card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  top: 0;
+  left: -100%;
+  transition: 0.5s;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+/* 📌 Icon */
+.card-icon {
+  font-size: 38px;
   margin-bottom: 10px;
 }
 
-/* 📱 Responsive (Tablet) */
+/* 📝 Text */
+.card h2 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* 📱 Tablet */
 @media (max-width: 768px) {
-  .cards {
+  .card-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* 📱 Mobile */
 @media (max-width: 480px) {
-  .cards {
+  .card-container {
     grid-template-columns: 1fr;
   }
 
-  .heading {
-    font-size: 22px;
+  .title {
+    font-size: 24px;
   }
 }
