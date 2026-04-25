@@ -82,3 +82,25 @@ export default function Home() {
         </div>
 
       </section>
+
+      <section className="features">
+
+        <h2 className="heading">
+          Key <span>Features</span>
+        </h2>
+
+        <p className="subtext">
+          Powerful tools to boost your placement preparation journey.
+        </p>
+
+        <div className="card-grid">
+          {features.map((item, index) => (
+            <FeatureCard key={index} {...item} />
+          ))}
+        </div>
+
+      </section>
+
+    </div>
+  );
+}
