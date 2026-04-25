@@ -37,3 +37,20 @@ export default function Login() {
 
     return newErrors;
   };
+
+   const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const validationErrors = validate();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      alert(isSignup ? "Signup Successful 🚀" : "Login Successful 🔐");
+
+      setForm({
+        name: "",
+        email: "",
+        password: "",
+      });
+    }
+  };
