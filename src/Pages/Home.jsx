@@ -37,14 +37,14 @@ export default function Home() {
     },
   ];
 
-  return (
+   return (
     <div className="home">
 
       {/* HERO */}
       <section className="hero">
         <h1>PlaceMentor</h1>
-          <p>Smart Placement Preparation System</p>
-        <div className="btn-container"></div>
+        <p>Smart Placement Preparation System</p>
+        <div className="btn-container">
         <button
           className="btn primary"
           onClick={() => navigate("/dashboard")}
@@ -54,8 +54,8 @@ export default function Home() {
         </div>
       </section>
 
-
- <section className="intro">
+      {/* ABOUT */}
+      <section className="intro">
 
         <h2 className="heading">
           About <span>PlaceMentor</span>
@@ -83,6 +83,7 @@ export default function Home() {
 
       </section>
 
+      {/* FEATURES */}
       <section className="features">
 
         <h2 className="heading">
