@@ -1,92 +1,133 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/Mockinterview.css";
 
-const questions = [
-  "Tell me about yourself.",
-  "What are your strengths and weaknesses?",
-  "Why should we hire you?",
-  "Describe a challenging project.",
-  "Where do you see yourself in 5 years?"
-];
+// ✅ Question Bank
+const questionBank = {
+  aptitude: [
+    { q: "2 + 2 = ?", options: ["3", "4", "5"], answer: "4" },
+    { q: "5 × 3 = ?", options: ["10", "15", "20"], answer: "15" },
+    { q: "10 / 2 = ?", options: ["2", "5", "8"], answer: "5" }
+  ],
+  dsa: [
+    { q: "Stack follows?", options: ["FIFO", "LIFO"], answer: "LIFO" },
+    { q: "Queue follows?", options: ["FIFO", "LIFO"], answer: "FIFO" }
+  ],
+  interview: [
+    { q: "Tell me about yourself", options: ["Good", "Bad"], answer: "Good" }
+  ],
+  more: [
+    { q: "HTML stands for?", options: ["Markup", "Programming"], answer: "Markup" }
+  ]
+};
 
 const MockInterview = () => {
+  const [step, setStep] = useState("category");
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [index, setIndex] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(30);
-  const [answer, setAnswer] = useState("");
+  const [score, setScore] = useState(0);
 
-  // Reset to question 1 on component mount
-  useEffect(() => {
+  // Select Category
+  const handleCategorySelect = (cat) => {
+    setSelectedCategory(cat);
+    setStep("quiz");
     setIndex(0);
-    setTimeLeft(30);
-    setAnswer("");
-  }, []);
+    setScore(0);
+  };
 
-  // Timer Logic with auto-next
-  useEffect(() => {
-    if (timeLeft === 0) {
-      handleNext();
-      return;
+  // Handle Answer
+  const handleAnswer = (option) => {
+    const questions = questionBank[selectedCategory];
+
+    if (option === questions[index].answer) {
+      setScore((prev) => prev + 1);
     }
-
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [timeLeft]);
-
-  const handleNext = () => {
-    setAnswer("");
 
     if (index < questions.length - 1) {
       setIndex(index + 1);
-      setTimeLeft(30);
     } else {
-      alert("Interview Completed!");
-      setIndex(0);
-      setTimeLeft(30);
+      // Finish
+      const finalScore =
+        option === questions[index].answer ? score + 1 : score;
+
+      setScore(finalScore);
+      setStep("result");
+
+      // ✅ Save to localStorage
+      localStorage.setItem("lastScore", finalScore);
     }
   };
 
-  const progress = ((index + 1) / questions.length) * 100;
+  // Rank Logic
+  const getRank = () => {
+    if (score <= 1) return "Beginner";
+    if (score <= 2) return "Intermediate";
+    return "Expert";
+  };
 
-  return (
-    <div className="mock-container">
-      <h2>Mock Interview</h2>
+  // ================= UI =================
 
-      {/* Progress */}
-      <div className="progress-bar">
-        <div className="progress" style={{ width: `${progress}%` }}></div>
+  // 🟦 CATEGORY PAGE
+  if (step === "category") {
+    return (
+      <div className="mock-container">
+        <h2>Select Category</h2>
+
+        <div className="cards">
+          {Object.keys(questionBank).map((cat) => (
+            <div
+              key={cat}
+              className="card"
+              onClick={() => handleCategorySelect(cat)}
+            >
+              {cat.toUpperCase()}
+            </div>
+          ))}
+        </div>
       </div>
+    );
+  }
 
-      <p className="question-count">
-        Question {index + 1} / {questions.length}
-      </p>
+  // 🟩 QUIZ PAGE
+  if (step === "quiz") {
+    const questions = questionBank[selectedCategory];
+    const currentQ = questions[index];
 
-      {/* Question */}
-      <div className="question-box">
-        {questions[index]}
+    return (
+      <div className="mock-container">
+        <h2>{selectedCategory.toUpperCase()} Quiz</h2>
+
+        <p>
+          Question {index + 1} / {questions.length}
+        </p>
+
+        <div className="question-box">{currentQ.q}</div>
+
+        <div className="options">
+          {currentQ.options.map((opt, i) => (
+            <button key={i} onClick={() => handleAnswer(opt)}>
+              {opt}
+            </button>
+          ))}
+        </div>
       </div>
+    );
+  }
 
-      {/* Timer */}
-      <div className="timer">⏱ {timeLeft}s</div>
+  // 🟨 RESULT PAGE
+  if (step === "result") {
+    return (
+      <div className="mock-container">
+        <h2>Interview Completed 🎉</h2>
 
-      {/* Answer Box */}
-      <textarea
-        placeholder="Type your answer here..."
-        value={answer}
-        onChange={(e) => setAnswer(e.target.value)}
-      ></textarea>
+        <h3>Score: {score}</h3>
+        <h3>Rank: {getRank()}</h3>
 
-      {/* Buttons */}
-      <div className="btn-group">
-        <button onClick={handleNext} className="next-btn">Next</button>
-        <button onClick={handleNext} className="skip-btn">Skip</button>
+        <button onClick={() => setStep("category")}>
+          Try Again
+        </button>
       </div>
-
-      <button className="submit-btn">Submit Interview</button>
-    </div>
-  );
+    );
+  }
 };
 
 export default MockInterview;
