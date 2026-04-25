@@ -73,3 +73,16 @@
   line-height: 1.7; /* spacing fix */
   color: #444;
 }
+
+.features {
+  padding: 30px 20px 50px;
+  text-align: center;
+}
+
+/* GRID */
+.card-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
