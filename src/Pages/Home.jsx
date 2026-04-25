@@ -36,3 +36,10 @@ export default function Home() {
       icon: "📊",
     },
   ];
+
+  return (
+    <div className="home">
+
+      {/* HERO */}
+      <section className="hero">
+        <h1>PlaceMentor</h1>
