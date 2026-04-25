@@ -45,3 +45,11 @@ export default function Home() {
         <h1>PlaceMentor</h1>
           <p>Smart Placement Preparation System</p>
         <div className="btn-container"></div>
+        <button
+          className="btn primary"
+          onClick={() => navigate("/dashboard")}
+        >
+          Get Started
+        </button>
+        </div>
+      </section>
