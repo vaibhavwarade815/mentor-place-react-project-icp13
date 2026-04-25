@@ -11,3 +11,7 @@ export default function Login() {
   });
 
    const [errors, setErrors] = useState({});
+
+    const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
