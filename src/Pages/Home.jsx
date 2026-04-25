@@ -64,3 +64,21 @@ export default function Home() {
         <p className="subtext">
           A smart platform designed to simplify placement preparation using modern technology.
         </p>
+
+        <div className="intro-content">
+          <p>
+            PlaceMentor helps students prepare efficiently for campus placements by combining
+            resume analysis, mock interviews, and structured learning in one system.
+          </p>
+
+          <p>
+            It identifies strengths and weaknesses and provides step-by-step improvement guidance.
+          </p>
+
+          <p>
+            With performance tracking and feedback, students can build confidence and succeed
+            in real interviews.
+          </p>
+        </div>
+
+      </section>
