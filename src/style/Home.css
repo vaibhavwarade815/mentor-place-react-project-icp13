@@ -2,3 +2,15 @@
   font-family: "Poppins", sans-serif;
   background: #f8fafc;
 }
+
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  color: white;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
