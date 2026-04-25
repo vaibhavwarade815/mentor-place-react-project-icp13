@@ -53,3 +53,14 @@ export default function Home() {
         </button>
         </div>
       </section>
+
+
+ <section className="intro">
+
+        <h2 className="heading">
+          About <span>PlaceMentor</span>
+        </h2>
+
+        <p className="subtext">
+          A smart platform designed to simplify placement preparation using modern technology.
+        </p>
