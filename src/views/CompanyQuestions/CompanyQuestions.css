@@ -1,0 +1,127 @@
+/* ── Page ── */
+body { margin: 0; }
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 36px 0 8px;
+  color: var(--text-heading);
+  letter-spacing: -0.5px;
+}
+
+/* ── Company Cards Grid ── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 24px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  height: 100px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-heading);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent);
+}
+.card:hover::before { opacity: 1; }
+
+/* ── Subjects ── */
+#subjects {
+  text-align: center;
+  margin: 24px 0;
+  padding: 0 24px;
+}
+#subjects h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 16px;
+}
+
+.subject-btn {
+  margin: 5px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg-card);
+  font-family: var(--font);
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+}
+.subject-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ── Question Box ── */
+.question-box {
+  width: min(720px, 90%);
+  margin: 24px auto 48px;
+  padding: 28px;
+  border-radius: var(--radius-xl);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+.question-box h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+ul { list-style: none; padding: 0; margin: 0; }
+
+li {
+  margin: 6px 0;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  color: var(--text);
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+li::before { content: "›"; color: var(--accent); font-weight: 700; font-size: 16px; flex-shrink: 0; }
+li:hover { background: var(--bg-hover); border-color: var(--border); color: var(--text-heading); }
+
+.hidden { display: none; }
