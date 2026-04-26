@@ -1,45 +1,58 @@
-import { useState } from "react";
-import Navbar from "../components/Navbar.jsx";
-import Card from "../Components/Card.jsx";
-import "../styles/dashboard.css";
+import { useNavigate } from "react-router-dom";
+import "./Dashboard.css";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
 
-  // 🔹 State
-  const [score, setScore] = useState(75);
-  const [progress, setProgress] = useState(60);
+  const features = [
+    {
+      title: "Resume Upload",
+      desc: "Upload & analyze resume",
+      icon: "📄",
+      path: "/upload",
+    },
+    {
+      title: "Placement Preparation",
+      desc: "Prepare for interviews",
+      icon: "📚",
+      path: "/prep",
+    },
+    {
+      title: "Mock Interview",
+      desc: "Practice interviews",
+      icon: "🎤",
+      path: "/mock",
+    },
+    {
+      title: "Progress Tracker",
+      desc: "Track your progress",
+      icon: "📊",
+      path: "/progress",
+    },
+    {
+      title: "Career Guidance",
+      desc: "Get career advice",
+      icon: "🚀",
+      path: "/career",
+    },
+  ];
 
   return (
     <div className="dashboard">
+      <h1 className="title">Welcome back 👋</h1>
 
-      <Navbar />
-
-      <div className="dashboard-container">
-        <h2>Welcome to PlaceMentor AI 👋</h2>
-
-        <div className="card-container">
-          
-          <Card title="Resume Score" value={`${score}%`} />
-
-          <Card title="Preparation Progress" value={`${progress}%`} />
-
-          <Card 
-            title="Status"
-            value={score > 70 ? "Good 👍" : "Needs Improvement ⚠️"}
-          />
-
-        </div>
-
-        <div className="actions">
-          <button onClick={() => setScore(score + 5)}>
-            Improve Score
-          </button>
-
-          <button onClick={() => setProgress(progress + 10)}>
-            Update Progress
-          </button>
-        </div>
-
+      <div className="card-container">
+        {features.map((item, index) => (
+          <div
+            key={index}
+            className="card"
+            onClick={() => navigate(item.path)}
+          >
+            <div className="card-icon">{item.icon}</div>
+            <h2>{item.title}</h2>
+            <p>{item.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
