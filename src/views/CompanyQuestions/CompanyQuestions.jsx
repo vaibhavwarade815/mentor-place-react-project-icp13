@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/CompanyQuestions.css";
+import "./CompanyQuestions.css";
 
 const CompanyQuestions = () => {
   const [selectedCompany, setSelectedCompany] = useState(null);

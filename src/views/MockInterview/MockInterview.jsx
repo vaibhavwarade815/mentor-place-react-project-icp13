@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Mockinterview.css";
+import "./MockInterview.css";
 
 const categories = [
   { name: "Aptitude 🧠", key: "aptitude", subtitle: "Logic, math, and reasoning" },
@@ -74,19 +74,6 @@ export default function MockInterview() {
 
   const questions = category ? questionsByCategory[category] : [];
 
-  // ⏱️ TIMER LOGIC
-  useEffect(() => {
-    if (completed || !category) return;
-
-    if (time === 0) {
-      handleNext(true); // auto skip
-      return;
-    }
-
-    const timer = setTimeout(() => setTime(time - 1), 1000);
-    return () => clearTimeout(timer);
-  }, [time, completed, category]);
-
   // 🎯 CHECK ANSWER
   const checkAnswer = () => {
     const question = questions[index];
@@ -98,24 +85,6 @@ export default function MockInterview() {
     if (userInput && answer && userInput.includes(answer)) {
       setScore((prev) => prev + 1);
     }
-  };
-
-  const handleNext = (skip = false) => {
-    if (!skip) checkAnswer();
-
-    setInput("");
-    setTime(15);
-
-    if (index + 1 < questions.length) {
-      setIndex(index + 1);
-    } else {
-      finishQuiz();
-    }
-  };
-
-  const handleSubmit = () => {
-    checkAnswer();
-    finishQuiz();
   };
 
   const finishQuiz = () => {
@@ -134,6 +103,35 @@ export default function MockInterview() {
     localStorage.setItem("mockData", JSON.stringify(updated));
 
     setCompleted(true);
+  };
+
+  const handleNext = (skip = false) => {
+    if (!skip) checkAnswer();
+
+    setInput("");
+    setTime(15);
+
+    if (index + 1 < questions.length) {
+      setIndex(index + 1);
+    } else {
+      finishQuiz();
+    }
+  };
+
+  // ⏱️ TIMER LOGIC
+  useEffect(() => {
+    if (completed || !category) return;
+    if (time === 0) {
+      const id = setTimeout(() => handleNext(true), 0);
+      return () => clearTimeout(id);
+    }
+    const timer = setTimeout(() => setTime((t) => t - 1), 1000);
+    return () => clearTimeout(timer);
+  }, [time, completed, category]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleSubmit = () => {
+    checkAnswer();
+    finishQuiz();
   };
 
   const reset = () => {

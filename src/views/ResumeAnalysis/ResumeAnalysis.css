@@ -1,0 +1,94 @@
+.analysis-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+  font-family: var(--font);
+  padding: 24px;
+}
+
+.analysis-card {
+  width: min(440px, 100%);
+  padding: 32px;
+  border-radius: var(--radius-xl);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.analysis-card h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-heading);
+  margin-bottom: 20px;
+}
+
+.score-circle {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent-green) var(--score), var(--border) var(--score));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-circle h1 {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-heading);
+  background: var(--bg-card);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;
+  margin: 0 0 20px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--accent-green);
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+.suggestion-box { text-align: left; margin-bottom: 20px; }
+.suggestion-box h3 { font-size: 14px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px; }
+.suggestion-box ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.suggestion-box li {
+  background: #3fb95018;
+  color: var(--accent-green);
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  border: 1px solid #3fb95030;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn {
+  width: 100%;
+  padding: 11px 24px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  font-family: var(--font);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.back-btn:hover { opacity: 0.88; transform: translateY(-1px); }

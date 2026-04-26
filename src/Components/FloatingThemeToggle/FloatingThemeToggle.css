@@ -1,0 +1,79 @@
+/* ── Floating Theme Toggle ── */
+.ftg-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 8px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+/* Dark mode style */
+.ftg-dark {
+  background: #1e1b3a;
+  color: #c4b5fd;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+}
+
+/* Light mode style */
+.ftg-light {
+  background: #ffffff;
+  color: #7c3aed;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ftg-btn:hover {
+  transform: translateY(-3px);
+}
+
+.ftg-dark:hover  { box-shadow: 0 8px 28px rgba(139, 92, 246, 0.5); }
+.ftg-light:hover { box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2); }
+
+/* Track (pill background) */
+.ftg-track {
+  width: 40px;
+  height: 24px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+
+.ftg-dark  .ftg-track { background: rgba(139, 92, 246, 0.3); justify-content: flex-end; }
+.ftg-light .ftg-track { background: rgba(124, 58, 237, 0.15); justify-content: flex-start; }
+
+/* Thumb (circle with emoji) */
+.ftg-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.ftg-dark  .ftg-thumb { background: #8b5cf6; }
+.ftg-light .ftg-thumb { background: #fbbf24; }
+
+/* Label */
+.ftg-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
