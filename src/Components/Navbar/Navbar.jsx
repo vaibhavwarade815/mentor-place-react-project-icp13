@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
-import "../styles/Navbar.css";
+import { useTheme } from "../../context/ThemeContext";
+import "./Navbar.css";
 
 const features = [
   { label: "Resume Upload",         path: "/upload",    icon: "📄" },
