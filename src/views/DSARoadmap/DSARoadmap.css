@@ -1,0 +1,49 @@
+.dsa-page { min-height: 100vh; background: var(--wp-bg, #f5f3ff); font-family: 'Inter', sans-serif; transition: background 0.3s; }
+.dsa-guard { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: var(--wp-bg, #f5f3ff); font-size: 18px; color: var(--wp-text, #374151); }
+.dsa-guard button { padding: 10px 24px; border-radius: 12px; border: none; background: #6366f1; color: white; font-weight: 700; cursor: pointer; }
+
+.dsa-hero { background: linear-gradient(135deg, #4f46e5 0%, #6d28d9 50%, #7c3aed 100%); padding: 60px 24px; text-align: center; position: relative; overflow: hidden; }
+.dsa-hero::before { content: ""; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: rgba(255,255,255,0.04); top: -200px; right: -100px; }
+.dsa-hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; font-size: 13px; font-weight: 600; padding: 6px 18px; border-radius: 20px; margin-bottom: 16px; }
+.dsa-hero h1 { font-size: 34px; font-weight: 800; color: white; margin: 0 0 12px; }
+.dsa-hero p  { font-size: 15px; color: rgba(255,255,255,0.8); margin: 0 0 24px; }
+.dsa-hero-stats { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.dsa-hero-stats span { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 7px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+
+.dsa-body { max-width: 860px; margin: 0 auto; padding: 36px 24px 60px; }
+.dsa-section-label { font-size: 15px; font-weight: 700; color: #4f46e5; margin: 32px 0 14px; }
+
+.dsa-progress-bar-wrap { background: var(--wp-card, white); border-radius: 16px; padding: 20px 24px; border: 1.5px solid var(--wp-card-border, #e0e7ff); margin-bottom: 8px; }
+.dsa-progress-info { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #4f46e5; margin-bottom: 10px; }
+.dsa-progress-track { height: 10px; background: var(--wp-input-border, #e0e7ff); border-radius: 10px; overflow: hidden; }
+.dsa-progress-fill { height: 100%; background: linear-gradient(90deg, #6366f1, #a855f7); border-radius: 10px; transition: width 0.8s ease; }
+
+.dsa-phases { display: flex; flex-direction: column; gap: 12px; margin-bottom: 8px; }
+.dsa-phase { background: var(--wp-card, white); border-radius: 18px; border: 1.5px solid var(--wp-card-border, #e0e7ff); overflow: hidden; box-shadow: 0 2px 8px rgba(99,102,241,0.06); transition: border-color 0.2s; }
+.dsa-phase.dsa-phase-open { border-color: var(--phase-color); }
+.dsa-phase-header { display: flex; align-items: center; gap: 14px; padding: 18px 22px; cursor: pointer; }
+.dsa-phase-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+.dsa-phase-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.dsa-phase-label { font-size: 11px; font-weight: 700; color: var(--wp-text-sub, #888); text-transform: uppercase; letter-spacing: 0.8px; }
+.dsa-phase-title { font-size: 15px; font-weight: 700; color: var(--wp-text, #1a1a2e); }
+.dsa-phase-duration { font-size: 12px; color: var(--wp-text-sub, #888); background: var(--wp-hover, #f5f3ff); padding: 4px 12px; border-radius: 20px; }
+.dsa-phase-arrow { font-size: 11px; color: #6366f1; }
+
+.dsa-topics { padding: 0 22px 18px; display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--wp-divider, #f5f3ff); }
+.dsa-topic-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 12px; background: var(--wp-input-bg, #fafafa); border: 1px solid var(--wp-card-border, #f0f0f0); transition: background 0.2s; }
+.dsa-topic-row.dsa-topic-done { background: #f0fdf4; border-color: #bbf7d0; }
+.dsa-checkbox { width: 16px; height: 16px; accent-color: #6366f1; cursor: pointer; flex-shrink: 0; }
+.dsa-topic-icon { font-size: 18px; flex-shrink: 0; }
+.dsa-topic-name { flex: 1; font-size: 14px; font-weight: 600; color: var(--wp-text, #1a1a2e); }
+.dsa-topic-problems { font-size: 12px; color: var(--wp-text-sub, #888); white-space: nowrap; }
+.dsa-diff-badge { font-size: 11.5px; font-weight: 700; padding: 3px 10px; border-radius: 20px; flex-shrink: 0; }
+
+.dsa-resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.dsa-resource-card { display: flex; align-items: center; gap: 12px; background: var(--wp-card, white); border-radius: 14px; padding: 16px 18px; border: 1.5px solid var(--wp-card-border, #e0e7ff); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+.dsa-resource-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(99,102,241,0.12); border-color: #6366f1; }
+.dsa-res-icon { font-size: 22px; flex-shrink: 0; }
+.dsa-res-name { font-size: 14px; font-weight: 700; color: var(--wp-text, #1a1a2e); margin: 0 0 2px; }
+.dsa-res-desc { font-size: 12px; color: var(--wp-text-sub, #888); margin: 0; }
+.dsa-res-arrow { margin-left: auto; color: #6366f1; font-size: 16px; font-weight: 700; }
+
+@media (max-width: 600px) { .dsa-resources-grid { grid-template-columns: 1fr; } .dsa-hero h1 { font-size: 24px; } .dsa-topic-problems { display: none; } }
