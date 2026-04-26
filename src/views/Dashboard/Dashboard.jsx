@@ -4,12 +4,12 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 
 const FEATURES = [
-  { key: "resume",    title: "Resume Upload",     desc: "AI-powered resume analysis & tips",        icon: "📄", path: "/upload",    color: "#58a6ff" },
-  { key: "prep",      title: "Placement Prep",    desc: "Topic-wise study plans for placements",    icon: "📚", path: "/prep",      color: "#bc8cff" },
-  { key: "mock",      title: "Mock Interview",    desc: "Practice with real interview questions",   icon: "🎤", path: "/mock",      color: "#f78166" },
-  { key: "progress",  title: "Progress Tracker",  desc: "Visualize your preparation journey",       icon: "📊", path: "/progress",  color: "#ffa657" },
-  { key: "career",    title: "Career Guidance",   desc: "Personalized advice from mentors",         icon: "🚀", path: "/career",    color: "#3fb950" },
-  { key: "community", title: "Student Community", desc: "Connect with 500+ placement aspirants",    icon: "👥", path: "/community", color: "#58a6ff" },
+  { key: "resume",    title: "Resume Upload",     desc: "AI-powered resume analysis & improvement tips",   icon: "📄", path: "/upload",    color: "#58a6ff" },
+  { key: "prep",      title: "Placement Prep",    desc: "Topic-wise structured study plans for campus",    icon: "📚", path: "/prep",      color: "#c084fc" },
+  { key: "mock",      title: "Mock Interview",    desc: "Practice with real questions, instant feedback",  icon: "🎤", path: "/mock",      color: "#ff6b6b" },
+  { key: "progress",  title: "Progress Tracker",  desc: "Visualize your preparation with analytics",       icon: "📊", path: "/progress",  color: "#ff9f43" },
+  { key: "career",    title: "Career Guidance",   desc: "Personalized career advice from industry mentors",icon: "🚀", path: "/career",    color: "#00d68f" },
+  { key: "community", title: "Student Community", desc: "Connect & grow with 500+ placement aspirants",    icon: "👥", path: "/community", color: "#00d4ff" },
 ];
 
 const QUICK_LINKS = [
@@ -46,10 +46,10 @@ export default function Dashboard({ form, completed, setCompleted, onLogout }) {
   const tip        = TIPS[new Date().getDay() % TIPS.length];
 
   const level =
-    overallPct >= 80 ? { label: "Placement Ready 🏆", color: "var(--accent-green)"  } :
-    overallPct >= 50 ? { label: "On Track 🚀",         color: "var(--accent)"        } :
-    overallPct >= 25 ? { label: "In Progress ⚡",       color: "var(--accent-orange)" } :
-                       { label: "Just Started 🌱",     color: "var(--text-muted)"    };
+    overallPct >= 80 ? { label: "Placement Ready 🏆", color: "var(--accent-green)",  bg: "rgba(0,214,143,0.12)",  border: "rgba(0,214,143,0.3)"  } :
+    overallPct >= 50 ? { label: "On Track 🚀",         color: "var(--accent)",        bg: "rgba(124,106,255,0.12)", border: "rgba(124,106,255,0.3)" } :
+    overallPct >= 25 ? { label: "In Progress ⚡",       color: "var(--accent-orange)", bg: "rgba(255,159,67,0.12)", border: "rgba(255,159,67,0.3)"  } :
+                       { label: "Just Started 🌱",     color: "var(--text-muted)",    bg: "var(--bg-hover)",       border: "var(--border)"         };
 
   const STATS = [
     { icon: "✅", val: `${done}/${total}`, label: "Tasks Done",       color: "var(--accent-green)"  },
@@ -58,9 +58,44 @@ export default function Dashboard({ form, completed, setCompleted, onLogout }) {
     { icon: "🎯", val: `${total - done}`,  label: "Remaining",        color: "var(--accent-orange)" },
   ];
 
+  const getGreeting = () => {
+    const h = new Date().getHours();
+    if (h < 12) return "Good Morning";
+    if (h < 17) return "Good Afternoon";
+    return "Good Evening";
+  };
+
   return (
     <div className="db-page">
       <Navbar form={form} onLogout={onLogout} onProfileClick={() => navigate("/profile")} />
+
+      {/* ── Hero Banner ── */}
+      <div className="db-hero-banner">
+        <div className="db-hero-inner">
+          <div className="db-hero-left">
+            <div className="db-hero-avatar">{initials}</div>
+            <div className="db-hero-greeting">
+              <h1 className="db-hero-title">
+                {getGreeting()}, <span>{form.name.split(" ")[0]}</span> 👋
+              </h1>
+              <div className="db-hero-sub">
+                <span>{form.branch} · {form.year}</span>
+                <span className="db-hero-badge" style={{ color: level.color, background: level.bg, borderColor: level.border }}>
+                  {level.label}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="db-hero-right">
+            <button className="db-hero-btn-ghost" onClick={() => navigate("/profile")}>
+              👤 My Profile
+            </button>
+            <button className="db-hero-btn-primary" onClick={() => navigate("/community")}>
+              👥 Join Community
+            </button>
+          </div>
+        </div>
+      </div>
 
       <div className="db-wrap">
 
@@ -68,12 +103,13 @@ export default function Dashboard({ form, completed, setCompleted, onLogout }) {
         <aside className="db-sidebar">
 
           {/* Profile card */}
-          <div className="db-card db-profile-card">
+          <div className="db-profile-card">
             <div className="db-avatar">{initials}</div>
             <h3 className="db-name">{form.name}</h3>
             <p className="db-meta">{form.branch} · {form.year}</p>
-            <span className="db-level" style={{ color: level.color }}>{level.label}</span>
-
+            <span className="db-level" style={{ color: level.color, background: level.bg, borderColor: level.border }}>
+              {level.label}
+            </span>
             <div className="db-score-wrap">
               <div className="db-score-row">
                 <span>Overall Score</span>
@@ -83,7 +119,6 @@ export default function Dashboard({ form, completed, setCompleted, onLogout }) {
                 <div className="db-bar-fill" style={{ width: `${overallPct}%`, background: level.color }} />
               </div>
             </div>
-
             {form.skills && (
               <div className="db-skills">
                 {form.skills.split(",").map((s, i) => (
@@ -91,7 +126,6 @@ export default function Dashboard({ form, completed, setCompleted, onLogout }) {
                 ))}
               </div>
             )}
-
             <button className="db-profile-btn" onClick={() => navigate("/profile")}>
               View Full Profile →
             </button>
@@ -120,17 +154,6 @@ export default function Dashboard({ form, completed, setCompleted, onLogout }) {
         {/* ── Main ── */}
         <main className="db-main">
 
-          {/* Header */}
-          <div className="db-header">
-            <div>
-              <h1 className="db-welcome">Good day, {form.name.split(" ")[0]} 👋</h1>
-              <p className="db-sub">Here's your placement preparation overview.</p>
-            </div>
-            <button className="db-cta-btn" onClick={() => navigate("/community")}>
-              👥 Join Community
-            </button>
-          </div>
-
           {/* Stats */}
           <div className="db-stats">
             {STATS.map((s, i) => (
@@ -154,6 +177,11 @@ export default function Dashboard({ form, completed, setCompleted, onLogout }) {
           </div>
 
           {/* Feature cards */}
+          <div className="db-section-header">
+            <span className="db-section-title">🗂️ Your Placement Toolkit</span>
+            <span className="db-section-sub">{done} of {total} completed</span>
+          </div>
+
           <div className="db-cards">
             {FEATURES.map((f) => {
               const isDone = !!completed[f.key];
@@ -184,7 +212,7 @@ export default function Dashboard({ form, completed, setCompleted, onLogout }) {
                     }
                     onClick={(e) => { e.stopPropagation(); toggle(f.key); }}
                   >
-                    {isDone ? "✓ Completed" : "Mark Done"}
+                    {isDone ? "✓ Completed" : "Mark as Done"}
                   </button>
                 </div>
               );
