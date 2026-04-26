@@ -1,0 +1,116 @@
+.home {
+  font-family: "Poppins", sans-serif;
+  background: #f8fafc;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  color: white;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 8px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  width:auto;
+  min-width: 120px;
+  max-width: fit-content;
+}
+
+.btn-container{
+  display: flex;
+  justify-content: center;
+}
+
+.primary {
+  background: #22c55e;
+  color: white;
+}
+
+.heading {
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.heading span {
+  color: #22c55e;
+  margin-left: 8px;
+}
+
+.subtext {
+  text-align: center;
+  color: #666;
+ 
+  margin-top: 10px;
+}
+
+.intro {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.intro-content {
+  max-width: 800px; /* 🔥 important fix */
+  margin: 0 auto;   /* center */
+  margin-top: 30px;
+}
+
+.intro-content p {
+  margin-top: 12px;
+  line-height: 1.7; /* spacing fix */
+  color: #444;
+}
+
+.features {
+  padding: 30px 20px 50px;
+  text-align: center;
+}
+
+/* GRID */
+.card-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card:hover {
+  transform: translateY(-8px);}
+
+.icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
