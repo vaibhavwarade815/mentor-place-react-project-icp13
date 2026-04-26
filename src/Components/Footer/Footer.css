@@ -2,7 +2,7 @@
    FOOTER — Impressive Student Design
 ══════════════════════════════════════ */
 .ft {
-  background: var(--bg-2);
+  background: #0a1940;
   border-top: 1px solid var(--border);
   font-family: var(--font);
   margin-top: auto;
