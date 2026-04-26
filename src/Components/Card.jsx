@@ -1,4 +1,4 @@
-import "./Card.css";
+import "../styles/Card.css";
 
 const Card = ({ title, desc, icon, onClick }) => {
   return (
