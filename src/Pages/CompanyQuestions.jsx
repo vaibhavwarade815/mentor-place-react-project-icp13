@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import "../styles/CompanyQuestions.css";
+import MockInterview from "../Pages/MockInterview";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Dashboard from "../Pages/Dashboard";
+
+
 
 const CompanyQuestions = () => {
   const [selectedCompany, setSelectedCompany] = useState(null);
