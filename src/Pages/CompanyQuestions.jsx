@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../style/cq.css";
 
+
 const PlacementPrep = () => {
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState(null);
@@ -16,7 +17,6 @@ const PlacementPrep = () => {
     SQL: ["DBMS?", "SQL?", "Primary key?", "Foreign key?", "Join?", "Types?", "Normalization?", "Index?", "View?", "Procedure?", "Trigger?", "Transaction?", "ACID?", "Group by?", "Having?"],
     Aptitude: ["Time Work", "Speed", "Profit", "SI", "CI", "Ratio", "Probability", "Permutation", "Number", "Average", "Percentage", "Mixture", "Calendar", "Clock", "DI"]
   };
-
   return (
     <div>
       <h1 className="title">🚀 Placement Preparation Hub</h1>
