@@ -1,10 +1,5 @@
 import React, { useState } from "react";
 import "../styles/CompanyQuestions.css";
-import MockInterview from "../Pages/MockInterview";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "../Pages/Dashboard";
-
-
 
 const CompanyQuestions = () => {
   const [selectedCompany, setSelectedCompany] = useState(null);
@@ -22,7 +17,7 @@ const CompanyQuestions = () => {
     Aptitude: ["Time Work", "Speed", "Profit", "SI", "CI", "Ratio", "Probability", "Permutation", "Number", "Average", "Percentage", "Mixture", "Calendar", "Clock", "DI"]
   };
 
-  const handleCompanyClick = (company) => {
+  const handleCardClick = (company) => {
     setSelectedCompany(company);
     setSelectedSubject(null);
   };
@@ -32,56 +27,63 @@ const CompanyQuestions = () => {
   };
 
   return (
-    <div className="company-questions-container">
+    <div className="container">
       <h1 className="title">🚀 Placement Preparation Hub</h1>
 
       {/* Company Cards */}
-      <div className="cards">
-        {companies.map((company, idx) => (
-          <div 
-            key={idx}
-            className="card"
-            onClick={() => handleCompanyClick(company)}
-          >
-            💼 {company}
-          </div>
-        ))}
-      </div>
+      {!selectedCompany ? (
+        <div id="companies" className="cards">
+          <div className="card" onClick={() => handleCardClick("TCS")}>💼 TCS</div>
+          <div className="card" onClick={() => handleCardClick("Infosys")}>💻 Infosys</div>
+          <div className="card" onClick={() => handleCardClick("Wipro")}>🚀 Wipro</div>
+          <div className="card" onClick={() => handleCardClick("Accenture")}>🌐 Accenture</div>
+          <div className="card" onClick={() => handleCardClick("Capgemini")}>⚡ Capgemini</div>
+        </div>
+      ) : null}
 
       {/* Subjects */}
-      {selectedCompany && (
-        <div className="subjects">
+      {selectedCompany && !selectedSubject ? (
+        <div id="subjects">
           <h2>{selectedCompany} Subjects</h2>
-          <div className="subject-buttons">
-            {subjects.map((subject, idx) => (
+          <button 
+            className="subject-btn back-link" 
+            onClick={() => setSelectedCompany(null)}
+          >
+            ← Back
+          </button>
+          <div>
+            {subjects.map((sub) => (
               <button
-                key={idx}
+                key={sub}
                 className="subject-btn"
-                onClick={() => handleSubjectClick(subject)}
+                onClick={() => handleSubjectClick(sub)}
               >
-                {subject}
+                {sub}
               </button>
             ))}
           </div>
         </div>
-      )}
+      ) : null}
 
       {/* Questions */}
-      {selectedSubject && selectedCompany && (
-        <div className="question-box">
+      {selectedCompany && selectedSubject ? (
+        <div id="questions" className="question-box">
           <h2>{selectedCompany} - {selectedSubject}</h2>
+          <button 
+            className="subject-btn back-link" 
+            onClick={() => setSelectedSubject(null)}
+          >
+            ← Back
+          </button>
           <ul>
-            {questionsData[selectedSubject].map((question, idx) => (
-              <li key={idx}>{question}</li>
+            {questionsData[selectedSubject].map((q, idx) => (
+              <li key={idx}>{q}</li>
             ))}
           </ul>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };
 
 export default CompanyQuestions;
-
-  document.getElementById("questions").innerHTML = html;
-  document.getElementById("questions").classList.remove("hidden");
