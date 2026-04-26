@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../style/cq.css";
+import "../styles/CompanyQuestions.css";
 
 
-const PlacementPrep = () => {
+const CompanyQuestions = () => {
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState(null);
 
@@ -70,4 +70,4 @@ const PlacementPrep = () => {
   );
 };
 
-export default PlacementPrep;
+export default CompanyQuestions;
