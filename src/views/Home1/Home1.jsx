@@ -1,4 +1,4 @@
-import "../style/Home.css";
+import "../Home1/Home.css";
 import { useNavigate } from "react-router-dom";
 
 function FeatureCard({ title, desc, icon }) {

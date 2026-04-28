@@ -5,6 +5,11 @@ A modern React-based web application designed to help students prepare effective
 ---
 
 
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home](./src/assets/home.png)
+
 ## 📌 Project Overview
 
 PlaceMentor is a smart placement preparation system that helps students:
@@ -59,7 +64,7 @@ PlaceMentor is a smart placement preparation system that helps students:
 ## ⚙️ Installation & Setup
 
 1️⃣ Clone the repository
-git clone https://github.com/your-username/placementor.git
+git clone https://github.com/vaibhavwarade815/mentor-place-react-project-icp13.git
 
 2️⃣ Go to project folder
 cd placementor
